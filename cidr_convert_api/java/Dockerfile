@@ -10,3 +10,4 @@ RUN cd cidr-api \
 CMD ["ash", "-c", "java -cp cidr-api/target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App"]
 # docker build -t jm .
 # docker run -ti -p 8000:8000 jm
+
