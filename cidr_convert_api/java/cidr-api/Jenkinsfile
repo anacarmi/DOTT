@@ -4,6 +4,7 @@ pipeline {
 
 			stage('Encontrar Dockerfile, ejecutarlo') {
 				steps {
+					sh 'cd /home/cloud_user'
 					sh 'touch holi.txt'
 					
 				}
