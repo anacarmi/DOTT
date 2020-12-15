@@ -3,19 +3,6 @@ properties([pipelineTriggers([githubPush()])])
 pipeline {
 	agent any
 		stages {
-			stage('ONE: Check GitHub commits') {
-				steps {sh 'echo "Step One"'
-					 checkout([
-      						$class: 'GitSCM',
-      						branches: [[name: 'master']],
-      						userRemoteConfigs: [[
-        						url: 'https://github.com/anacarmi/DOTT.git',
-        						credentialsId: '',
-     						]]
-     					])
-				      }
-
-			}
 
 			stage('Two') {
 				steps {sh 'echo "Step Two"'}
