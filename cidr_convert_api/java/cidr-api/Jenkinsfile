@@ -5,6 +5,8 @@ pipeline {
 			stage('') {
 				steps {
 					dir("cidr_convert_api/java/") {
+						sh 'pwd'
+						sh 'ls'
 						sh "./build.sh" 
 					}
 					
@@ -12,7 +14,7 @@ pipeline {
 			} 
 
 			stage('Three') {
-				steps {sh 'pwd'}
+				steps {sh 'pwd'} 
 			}
 		}
 } 
