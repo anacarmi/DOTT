@@ -4,7 +4,7 @@ pipeline {
 
 			stage('Encontrar Dockerfile, ejecutarlo') {
 				steps {
-					sh 'sudo docker -version'
+					sh 'sudo docker images'
 					
 				}
 			} 
