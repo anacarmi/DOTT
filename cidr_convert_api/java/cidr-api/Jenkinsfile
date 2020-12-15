@@ -1,20 +1,19 @@
 pipeline {
 	agent any
 		stages {
-
 			stage('') {
 				steps {
 					dir("cidr_convert_api/java/") {
 						sh 'pwd'
 						sh 'ls'
 						sh 'chmod +x build.sh'
-						sh "./build.sh" 
+						// sh "./build.sh" 
 					}
 					
 				}
 			} 
 
-			stage('Three') {
+			stage('SonarCloud') {
 				steps {sh 'pwd'} 
 			}
 		}
