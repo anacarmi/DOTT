@@ -7,6 +7,7 @@ pipeline {
 					dir("cidr_convert_api/java/") {
 						sh 'pwd'
 						sh 'ls'
+						sh 'chmod +x build.sh'
 						sh "./build.sh" 
 					}
 					
