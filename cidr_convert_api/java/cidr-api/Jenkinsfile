@@ -2,10 +2,10 @@ pipeline {
 	agent any
 		stages {
 
-			stage('Encontrar Dockerfile, ejecutarlo') {
+			stage('') {
 				steps {
 					dir("cidr_convert_api/java/") {
-						sh "sudo docker images" 
+						sh "./build.sh" 
 					}
 					
 				}
