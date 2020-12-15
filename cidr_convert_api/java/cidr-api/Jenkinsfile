@@ -4,8 +4,9 @@ pipeline {
 
 			stage('Encontrar Dockerfile, ejecutarlo') {
 				steps {
-					sh 'cd /var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master/cidr_convert_api/java/'
-					sh 'touch holi.shi'
+					dir("cidr_convert_api/java/") {
+						sh "pwd" 
+					}
 					
 				}
 			} 
