@@ -12,7 +12,7 @@ pipeline {
 			} 
 
 			stage('Three') {
-				steps {sh 'echo "Step Three"'}
+				steps {sh 'pwd'}
 			}
 		}
 } 
