@@ -2,8 +2,11 @@ pipeline {
 	agent any
 		stages {
 
-			stage('Two') {
-				steps {sh 'echo "Step Two"'}
+			stage('Encontrar Dockerfile, ejecutarlo') {
+				steps {
+					sh 'sudo docker -version'
+					
+				}
 			} 
 
 			stage('Three') {
