@@ -7,6 +7,7 @@ pipeline {
 						sh 'pwd'
 						sh 'ls'
 						sh 'chmod +x build.sh'
+						sh 'echo "hello"'
 						// sh "./build.sh" 
 					}
 					
