@@ -4,8 +4,7 @@ pipeline {
 
 			stage('Encontrar Dockerfile, ejecutarlo') {
 				steps {
-					sh 'sudo su'
-					sh 'sudo docker images'
+					sh 'touch holi.txt'
 					
 				}
 			} 
