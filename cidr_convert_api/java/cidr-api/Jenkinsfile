@@ -7,8 +7,7 @@ pipeline {
 						sh 'pwd'
 						sh 'chmod +x build.sh'
 						// sh "./build.sh" 
-					}
-					
+					}	
 				}
 			} 
 
@@ -20,7 +19,12 @@ pipeline {
 				        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' } 
 				}
 			}
+			
+			stage('Testing') {
+				steps {
+					sh 'echo "este es mi testing"'
+				}
+			}
 		}
 } 
-
  
