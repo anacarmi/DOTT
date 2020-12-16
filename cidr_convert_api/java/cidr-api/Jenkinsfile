@@ -23,9 +23,12 @@ pipeline {
 			stage('Testing') {
 				steps {
 					sh 'echo "este es mi testing"'
-					dir("cidr_convert_api/java/cidr-api/") {
-						sh 'mvn test' 
-					}	
+					dir("cidr_convert_api/java/cidr-api/") 
+						{ sh 'mvn test' }
+				}
+				post {
+					always {
+						junit 'target/test-classes/*.xml'
 				}
 			}
 		}
