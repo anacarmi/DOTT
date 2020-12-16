@@ -1,7 +1,9 @@
 pipeline {
 	agent any
+	environment { 
+      		SECRET_VARIABLE = credentials("MySCSecretFile") 
+   	}
 		stages {
-			
 			stage('Build') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api") {
@@ -15,12 +17,6 @@ pipeline {
 
 			stage('Code Analysis') {
 				steps {
-					node('Credential'){
-					withCredentials([[$class: 'UsernamePasswordMultiBinding',
-								credentialsId: 'MySCSecretFile', 
-								usernameVariable: 'DB_USERNAME', 
-								passwordVariable: 'DB_PASSWORD']])
-					}
 					//script { env.SONAR_TOKEN="d886edbdf658a6c002602fa25dbb04fae9cd9f13" }
 					dir("cidr_convert_api/java/cidr-api/") {
 					sh 'pwd'
