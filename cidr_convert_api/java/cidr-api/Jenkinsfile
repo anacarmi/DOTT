@@ -1,13 +1,11 @@
 pipeline {
 	agent any
 		stages {
-			stage('') {
+			stage('Build') {
 				steps {
 					dir("cidr_convert_api/java/") {
 						sh 'pwd'
-						sh 'ls'
 						sh 'chmod +x build.sh'
-						sh 'echo "hello"'
 						// sh "./build.sh" 
 					}
 					
