@@ -62,11 +62,11 @@ curl localhost/ip-validation?value=255.255.0.0
 ### CI/CD Pipeline
 - [ x ] Jenkins
     - [ x ] Webhook
-- [ x x] Sonar Qube
+- [ x ] Sonar Qube
     - [ ] (Plus) Linting
     - [ x ] Static Code Analysis
-- [ ] Testing
-    - [ ] Unit testing
+- [ x ] Testing
+    - [ x ] Unit testing
     - [ ] Functional Tesging(plus)
 - [ ] (Plus) Docker
 - [ ] (Plus) Seguridad
