@@ -26,13 +26,17 @@ pipeline {
 						{ sh 'mvn test'}
 					script {
 						try {
-							junit '**/target/surefire-reports/TEST-*.xml'}	
+							junit 'target/surefire-reports/TEST-*.xml'	
    						} catch (Exception e) {
       							echo 'Exception occurred: ' + e.toString()
       							sh 'Handle the exception!'
   						}
 					}
 				}
+			}
+			
+			stage('Docker') {
+				sh 'echo "next stage"'
 			}
 		}
 }
