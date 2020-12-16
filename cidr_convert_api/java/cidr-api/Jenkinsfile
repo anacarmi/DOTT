@@ -24,12 +24,12 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") 
 						{ sh 'mvn test'}
+					
 					script {
 						try {
 							junit 'target/surefire-reports/TEST-*.xml'	
    						} catch (Exception e) {
       							echo 'Exception occurred: ' + e.toString()
-      							sh 'Handle the exception!'
   						}
 					}
 				}
