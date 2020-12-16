@@ -23,14 +23,16 @@ pipeline {
 			stage('Testing') {
 				steps {
 					sh 'echo "este es mi testing"'
-					dir("cidr_convert_api/java/cidr-api/") 
-						{ sh 'mvn test' }
-				}
-				post {
-						always { 
-							sh 'pwd'
-							junit '**/target/surefire-reports/TEST-*.xml' }
-					
+					script {
+						try {
+							dir("cidr_convert_api/java/cidr-api/") 
+								{ sh 'mvn test' }	
+   						} 
+						catch (Exception e) {
+      							echo 'Exception occurred: ' + e.toString()
+      							sh 'Handle the exception!'
+  						}
+					}
 				}
 			}
 		}
