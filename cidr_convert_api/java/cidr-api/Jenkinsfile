@@ -1,6 +1,15 @@
 pipeline {
 	agent any
 		stages {
+			
+			stage('Versions') {
+            				steps {
+               					 sh 'docker --version'
+                				 sh 'git --version'
+                				 sh 'ruby --version'
+            				}
+			}
+			
 			stage('Build') {
 				steps {
 					dir("cidr_convert_api/java/") {
