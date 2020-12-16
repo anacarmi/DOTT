@@ -2,22 +2,16 @@ pipeline {
 	agent any
 		stages {
 			
-			stage('Versions') {
-            				steps {
-               					 sh 'docker --version'
-                				 sh 'git --version'
-                				 sh 'ruby --version'
-            				}
-			}
-			
 			stage('Build') {
 				steps {
 					dir("cidr_convert_api/java/") {
-						sh 'pwd'
-						sh 'sudo docker build -t jm .'
-						sh 'sudo docker run -ti -p 8000:8000 jm'
-						//sh 'chmod +x build.sh'
-						//sh "./build.sh" 
+						script {
+							sh 'pwd'
+							sh 'sudo docker build -t jm .'
+							sh 'sudo docker run -ti -p 8000:8000 jm'
+							//sh 'chmod +x build.sh'
+							//sh "./build.sh" 
+						}
 					}	
 				}
 			} 
