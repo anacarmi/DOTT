@@ -5,8 +5,8 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/") {
 						sh 'pwd'
-						sh 'docker build -t jm .'
-						sh 'docker run -ti -p 8000:8000 jm'
+						sh 'sudo docker build -t jm .'
+						sh 'sudo docker run -ti -p 8000:8000 jm'
 						//sh 'chmod +x build.sh'
 						//sh "./build.sh" 
 					}	
