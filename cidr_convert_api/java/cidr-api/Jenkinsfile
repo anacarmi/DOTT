@@ -10,6 +10,7 @@ pipeline {
 						script { 
 							sh 'pwd'
 							sh 'mvn package'
+							sh 'mvn clean package'
 						}
 					}	
 				}
