@@ -8,11 +8,26 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api") {
 							script { 
-								sh 'mvn clean package'   //cleanly build your Java application 
+								sh 'mvn clean package'   //cleanly build your Java application maven, clears out the existing classes from last compile and
 							}
 					}	
 				}
 			} 
+			
+			stage('Testing') {
+				steps {
+					dir("cidr_convert_api/java/cidr-api/") 
+						{ sh 'mvn test'}			//  runs all unit test classes
+					
+					script {
+						try {
+							junit 'target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
+   						} catch (Exception e) {
+      							echo 'Exception occurred: ' + e.toString()	// try/catch for skipping the failing tests and keep going with pipeline
+  						}
+					}
+				}
+			}
 
 			stage('Code Analysis: SonarCloud') {     
 				steps {
@@ -20,6 +35,16 @@ pipeline {
 				        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' }  // runs the SC integration tests that maven finds in the project
 				}
 			}
+			
+			stage("Quality Gate") {
+           			steps {
+              				timeout(time: 1, unit: 'HOURS') {
+                			waitForQualityGate abortPipeline: true
+              				}
+          			}
+			
+			
+			
 			
 			stage('Code Analysis: Linting') {        
 				steps {
@@ -31,26 +56,11 @@ pipeline {
 				}
 			}
 			
-			stage('Testing') {
-				steps {
-					dir("cidr_convert_api/java/cidr-api/") 
-						{ sh 'mvn clean test'}			// maven clears out the existing classes from last compile and runs all unit test classes
-					
-					script {
-						try {
-							junit 'target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
-   						} catch (Exception e) {
-      							echo 'Exception occurred: ' + e.toString()	// try/catch for skipping the failing tests and keep going with pipeline
-  						}
-					}
-				}
-			}
-			
 			stage('Deploy Code') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/"){
 						script{
-							sh 'mvn clean package'        // this is my building... why do i need to run it again?
+							sh 'mvn package'        // this is my building... why do i need to run it again?
 							sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App' }  // running the app
 					}
 				}
