@@ -9,7 +9,6 @@ pipeline {
 					dir("cidr_convert_api/java/cidr-api") {
 						script { 
 							sh 'pwd'
-							sh 'mvn package'
 							sh 'mvn clean package'
 						}
 					}	
@@ -27,7 +26,7 @@ pipeline {
 			stage('Testing') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") 
-						{ sh 'mvn test'}
+						{ sh 'mvn clean test'}
 					
 					script {
 						try {
