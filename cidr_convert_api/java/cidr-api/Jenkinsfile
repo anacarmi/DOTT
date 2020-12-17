@@ -7,8 +7,10 @@ pipeline {
 			stage('Build') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api") {
-						script { 
-							sh 'mvn clean package'
+						keepRunning{
+							script { 
+								sh 'mvn clean package'
+							}
 						}
 					}	
 				}
@@ -50,7 +52,7 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/"){
 						script{
-							sh 'mvn clean package'
+							//sh 'mvn clean package'
 							sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App' }
 					}
 				}
