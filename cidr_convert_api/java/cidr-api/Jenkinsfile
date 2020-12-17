@@ -53,7 +53,7 @@ pipeline {
 					dir("cidr_convert_api/java/cidr-api/"){
 						script{
 							sh 'mvn package'        // this is my building... why do i need to run it again?
-							//sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App'
+							sh 'nuhoup java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App'
 						}  // running the app
 					}
 				}
