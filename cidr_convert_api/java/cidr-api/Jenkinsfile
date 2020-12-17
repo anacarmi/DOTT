@@ -1,9 +1,5 @@
 pipeline {
 	agent any 
-	//environment { 
-      		//SONAR_TOKEN = credentials("MySCSecretFile")   //SECURITY: token needed for Jenkins to connect to SonarCloud
-		//SONAR_MAVEN_GOAL=credentials("MySCSecretFile")
-   	//}
 		stages {
 			stage('Build') {
 				steps {
