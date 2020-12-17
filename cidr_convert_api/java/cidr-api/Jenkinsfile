@@ -48,8 +48,9 @@ pipeline {
 			
 			stage('Deploy Code') {
 				steps {
-					dir("cidr_convert_api/java/"){
+					dir("cidr_convert_api/java/cidr-api/"){
 						script{
+							sh 'mvn clean package'
 							sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App' }
 					}
 				}
