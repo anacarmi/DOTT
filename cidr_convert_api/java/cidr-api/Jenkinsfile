@@ -33,7 +33,6 @@ pipeline {
 				}
 			}
 			
-			
 			stage('Testing') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") 
