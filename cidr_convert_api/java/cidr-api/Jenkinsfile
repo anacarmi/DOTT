@@ -31,7 +31,7 @@ pipeline {
 			}
 
 			stage('Code Analysis: SonarCloud') {     
-					environment {
+					environment { 
     						SCANNER_HOME = tool 'SonarQubeScanner'
    						ORGANIZATION = "anacarmi"
     						PROJECT_NAME = "MyProjectSonarCloud"
