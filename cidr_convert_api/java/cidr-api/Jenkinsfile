@@ -8,7 +8,6 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api") {
 						script { 
-							sh 'pwd'
 							sh 'mvn clean package'
 						}
 					}	
@@ -18,7 +17,6 @@ pipeline {
 			stage('Code Analysis: SonarCloud') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") {
-					sh 'pwd'
 				        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' } 
 				}
 			}
@@ -48,9 +46,10 @@ pipeline {
 				}
 			}
 			
-			stage('Docker') {
+			stage('Deploy Code') {
 				steps {
-					sh 'echo "next stage"'
+					dir("cidr_convert_api/java/cidr-api/"){
+						sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App' }
 				}
 			}
 		}
