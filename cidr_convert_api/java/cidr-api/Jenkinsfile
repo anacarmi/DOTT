@@ -45,14 +45,14 @@ pipeline {
       			//				  -Dsonar.projectKey=$PROJECT_NAME \
        			//				  -Dsonar.sources=.'''
     			//		}
-				
-					withSonarQubeEnv('SonarCloud') { //credentialsId:'MySCSecretFile', 
-						sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
-					}
+					dir("cidr_convert_api/java/cidr-api/") {
+						withSonarQubeEnv('SonarCloud') { //credentialsId:'MySCSecretFile', 
+							sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+						}
 						//dir("cidr_convert_api/java/cidr-api/") {
 				        	//sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' }  // runs the SC integration tests that maven finds in the project
 						
-					//}	
+					}	
 				}
 	
 			}
