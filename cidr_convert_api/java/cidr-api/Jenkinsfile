@@ -15,13 +15,24 @@ pipeline {
 				}
 			} 
 
-			stage('Code Analysis') {
+			stage('Code Analysis: SonarCloud') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") {
 					sh 'pwd'
 				        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' } 
 				}
 			}
+			
+			stage('Code Analysis: Linting') {
+				steps {
+					dir("cidr_convert_api/java/cidr-api/") {
+				        sh 'mvn pmd:pmd' }
+					dir("cidr_convert_api/java/cidr-api/target") {
+					sh 'cat pmd.xml'
+					}
+				}
+			}
+			
 			
 			stage('Testing') {
 				steps {
