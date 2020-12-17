@@ -1,9 +1,9 @@
 pipeline {
 	agent any 
-	environment { 
-      		SONAR_TOKEN = credentials("MySCSecretFile")   //SECURITY: token needed for Jenkins to connect to SonarCloud
-		SONAR_MAVEN_GOAL=credentials("MySCSecretFile")
-   	}
+	//environment { 
+      		//SONAR_TOKEN = credentials("MySCSecretFile")   //SECURITY: token needed for Jenkins to connect to SonarCloud
+		//SONAR_MAVEN_GOAL=credentials("MySCSecretFile")
+   	//}
 		stages {
 			stage('Build') {
 				steps {
@@ -30,11 +30,6 @@ pipeline {
 			}
 
 			stage('Code Analysis: SonarCloud') {     
-					//environment { 
-    					//	SCANNER_HOME = tool 'SonarCloud' 
-   					//	ORGANIZATION = "anacarmi"
-    					//	PROJECT_NAME = "MyProjectSonarCloud"
-  					//}
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") {
 						withSonarQubeEnv('SonarCloud') { 
@@ -42,7 +37,7 @@ pipeline {
 						}
 					}
 					timeout(time: 1, unit: 'HOURS') {
-                				waitForQualityGate abortPipeline: true
+                				waitForQualityGate abortPipeline: true     // if QG says fail, then the pipeline stops
               				}		
 				}
 			} 
