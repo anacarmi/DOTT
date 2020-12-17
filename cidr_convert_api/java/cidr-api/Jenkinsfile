@@ -32,7 +32,7 @@ pipeline {
 
 			stage('Code Analysis: SonarCloud') {     
 					environment { 
-    						SCANNER_HOME = tool 'SonarCloud'
+    						SCANNER_HOME = tool 'SonarCloud' 
    						ORGANIZATION = "anacarmi"
     						PROJECT_NAME = "MyProjectSonarCloud"
   					}
