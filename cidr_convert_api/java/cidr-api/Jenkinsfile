@@ -33,8 +33,8 @@ pipeline {
 				steps {
 					withSonarQubeEnv(installationName: 'My SonarQube Server') { //credentialsId:'MySCSecretFile', 
 						//dir("cidr_convert_api/java/cidr-api/") {
-				        	//sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' }  // runs the SC integration tests that maven finds in the project
-						sh "${scannerHome}/bin/sonar-scanner"				
+				        	sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' //}  // runs the SC integration tests that maven finds in the project
+										
 					}
 				}
 			}
