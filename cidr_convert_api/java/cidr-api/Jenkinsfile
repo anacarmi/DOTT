@@ -1,34 +1,32 @@
 pipeline {
 	agent any
 	environment { 
-      		SONAR_TOKEN = credentials("MySCSecretFile") 
+      		SONAR_TOKEN = credentials("MySCSecretFile")   //SECURITY: token needed for Jenkins to connect to SonarCloud
    	}
 		stages {
 			stage('Build') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api") {
-						keepRunning{
 							script { 
-								sh 'mvn clean package'
+								sh 'mvn clean package'   //cleanly build your Java application 
 							}
-						}
 					}	
 				}
 			} 
 
-			stage('Code Analysis: SonarCloud') {
+			stage('Code Analysis: SonarCloud') {     
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") {
-				        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' } 
+				        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' }  // runs the SC integration tests that maven finds in the project
 				}
 			}
 			
-			stage('Code Analysis: Linting') {
+			stage('Code Analysis: Linting') {        
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") {
-				        sh 'mvn pmd:pmd' }
-					dir("cidr_convert_api/java/cidr-api/target") {
-					sh 'cat pmd.xml'
+				        sh 'mvn pmd:pmd' }    				 // maven runs the 'programming mistake detector' to find mistakes in code
+					dir("cidr_convert_api/java/cidr-api/target") {    
+					sh 'cat pmd.xml'				 // taking a look at the report that pmd does about my code
 					}
 				}
 			}
@@ -36,13 +34,13 @@ pipeline {
 			stage('Testing') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") 
-						{ sh 'mvn clean test'}
+						{ sh 'mvn clean test'}			// maven clears out the existing classes from last compile and runs all unit test classes
 					
 					script {
 						try {
-							junit 'target/surefire-reports/TEST-*.xml'	
+							junit 'target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
    						} catch (Exception e) {
-      							echo 'Exception occurred: ' + e.toString()
+      							echo 'Exception occurred: ' + e.toString()	// try/catch for skipping the failing tests and keep going with pipeline
   						}
 					}
 				}
@@ -52,8 +50,8 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/"){
 						script{
-							//sh 'mvn clean package'
-							sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App' }
+							sh 'mvn clean package'        // this is my building... why do i need to run it again?
+							sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App' }  // running the app
 					}
 				}
 			}
