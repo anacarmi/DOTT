@@ -49,7 +49,9 @@ pipeline {
 			stage('Deploy Code') {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/"){
-						sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App' }
+						script{
+							sh 'java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App' }
+					}
 				}
 			}
 		}
