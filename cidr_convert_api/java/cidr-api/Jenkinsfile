@@ -50,14 +50,6 @@ pipeline {
 				}
 			} 
 			
-			stage("Quality Gate") {
-           			steps {
-              				
-          			}
-			}
-			
-			
-			
 			stage('Code Analysis: Linting') {        
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") {
