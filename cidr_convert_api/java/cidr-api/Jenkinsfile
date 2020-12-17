@@ -38,10 +38,11 @@ pipeline {
   					}
 				steps {
 					withSonarQubeEnv('SonarCloud') {
-       						 sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
-      							  -Dsonar.java.binaries=build/classes/java/ \
-      							  -Dsonar.projectKey=$PROJECT_NAME \
-       							  -Dsonar.sources=.'''
+						 mvn "$SONAR_MAVEN_GOAL -Dsonar.host.url=$SonarQubeScanner -Dsonar.projectkey=$PROJECT_NAME " + "$ORGANIZATION "
+       						 //sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
+      						//	  -Dsonar.java.binaries=build/classes/java/ \
+      						//	  -Dsonar.projectKey=$PROJECT_NAME \
+       						//	  -Dsonar.sources=.'''
     					}
 					//withSonarQubeEnv(installationName: 'My SonarQube Server') { //credentialsId:'MySCSecretFile', 
 						//dir("cidr_convert_api/java/cidr-api/") {
