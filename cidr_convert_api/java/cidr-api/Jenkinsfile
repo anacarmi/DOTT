@@ -14,7 +14,7 @@ pipeline {
 				}
 			} 
 			
-			stage('Testing') {
+			stage('Testing') { 
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") 
 						{ sh 'mvn test'}			//  runs all unit test classes
