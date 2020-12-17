@@ -9,7 +9,7 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api") {
 							script { 
-								sh 'mvn clean package'   //cleanly build your Java application maven, clears out the existing classes from last compile and
+								sh 'mvn package'   //cleanly build your Java application maven, clears out the existing classes from last compile and
 							}
 					}	
 				}
