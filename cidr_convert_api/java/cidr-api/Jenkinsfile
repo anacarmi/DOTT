@@ -35,7 +35,7 @@ pipeline {
 						dir("cidr_convert_api/java/cidr-api/") {
 				        	sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' }  // runs the SC integration tests that maven finds in the project
 										
-					}
+					
 				}
 			}
 			
