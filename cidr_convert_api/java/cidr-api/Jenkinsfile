@@ -31,20 +31,21 @@ pipeline {
 
 			stage('Code Analysis: SonarCloud') {     
 				steps {
-					withSonarQubeEnv(credentialsId:'MySCSecretFile', installationName: 'My SonarQube Server') {
-						dir("cidr_convert_api/java/cidr-api/") {
-				        	sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' }  // runs the SC integration tests that maven finds in the project
+					withSonarQubeEnv(installationName: 'My SonarQube Server') { //credentialsId:'MySCSecretFile', 
+						//dir("cidr_convert_api/java/cidr-api/") {
+				        	//sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' }  // runs the SC integration tests that maven finds in the project
+						sh "${scannerHome}/bin/sonar-scanner"				
 					}
 				}
 			}
 			
-			stage("Quality Gate") {
-           			steps {
-              				timeout(time: 1, unit: 'HOURS') {
-                			waitForQualityGate abortPipeline: true
-              				}
-          			}
-			}
+			//stage("Quality Gate") {
+           		//	steps {
+              		//		timeout(time: 1, unit: 'HOURS') {
+                	//		waitForQualityGate abortPipeline: true
+              		//		}
+          		//	}
+			//}
 			
 			
 			
