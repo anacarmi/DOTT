@@ -53,6 +53,7 @@ pipeline {
 					dir("cidr_convert_api/java/"){
 						script{
 							//sh 'mvn package'        // this is my building... why do i need to run it again?
+							sh 'chmod +x start.sh'
 							sh './start.sh'
 						}  // running the app
 					}
