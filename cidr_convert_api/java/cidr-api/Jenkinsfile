@@ -16,14 +16,16 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api") 
 						{ 	sh 'pwd'
-							sh 'mvn test'}			//  runs all unit test classes
+									//  runs all unit test classes
 					script {
 						try {
 							sh 'pwd'
+							sh 'mvn test'
 							junit '*/target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
    						} catch (Exception e) {
       							echo 'Exception occurred: ' + e.toString()	// try/catch for skipping the failing tests and keep going with pipeline
   						}
+					}
 					}
 				}
 			}
