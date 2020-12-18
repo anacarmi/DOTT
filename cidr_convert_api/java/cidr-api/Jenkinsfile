@@ -22,7 +22,7 @@ pipeline {
       							echo 'There is an error with tests: ' + e.toString()	// try/catch for skipping the failing tests and keep going with pipeline
   						}
 						sh 'pwd'
-						sh 'cat "target/surefire-reports/TEST-*.xml"'	 //runs java unit testing framework
+						sh 'cat target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
 					   }
 					}
 				}
