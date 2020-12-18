@@ -71,7 +71,7 @@
         <artifactId>maven-surefire-report-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
-          <outputDirectory>/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master/cidr_convert_api/java/cidr-api/target/report</outputDirectory>
+          <outputDirectory>/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master@2/cidr_convert_api/java/cidr-api/target/report</outputDirectory>
         </configuration>
       </plugin>
       <plugin>
@@ -79,7 +79,7 @@
         <artifactId>maven-site-plugin</artifactId>
         <version>2.1</version>
         <configuration>
-          <outputDirectory>/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master/cidr_convert_api/java/cidr-api/target/report</outputDirectory>
+          <outputDirectory>/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master@2/cidr_convert_api/java/cidr-api/target/report</outputDirectory>
         </configuration>
       </plugin>
     </plugins>
