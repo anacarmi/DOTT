@@ -53,10 +53,8 @@ pipeline {
 					dir("cidr_convert_api/java/cidr-api/"){
 						script{// sh 'mvn package'        // this is my building... why do i need to run it again?
 							sh 'pwd'
-							//sh 'chmod +x start.sh'
-							//sh './start.sh'
-							sh 'export BUILD_ID=dontKillMe'
-  							sh 'nohup java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App 2>/dev/null &'
+							sh 'chmod +x start.sh'
+  							sh './start.sh'
 						//sh 'nohup java - > $WORKSPACE/scriptOutput.txt 2>&1 &'
 						 // running the app
 						}
