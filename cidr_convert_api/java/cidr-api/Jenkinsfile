@@ -15,8 +15,6 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") 
 						{ 	sh 'pwd'
-						 	sh 'ls target'
-						 	sh 'mkdir -p target/surefire-reports'
 							sh 'mvn test'}			//  runs all unit test classes
 					script {
 						try {
@@ -33,6 +31,7 @@ pipeline {
 					dir("cidr_convert_api/java/cidr-api/") {
 						withSonarQubeEnv('SonarCloud') { 
 							sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+							sh 'pwd'
 						}
 					}
 					timeout(time: 1, unit: 'HOURS') {
