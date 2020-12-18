@@ -3,10 +3,10 @@ pipeline {
 		stages {
 			stage('Build') { 
 				steps {
-					dir("/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master/cidr_convert_api/java/cidr-api/") {
+					dir("/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master/cidr_convert_api/java/cidr-api") {
 							script { 
 								sh 'pwd'
-								sh 'mvn build'   //cleanly build your Java application maven, clears out the existing classes from last compile and
+								sh 'mvn clean build'   //cleanly build your Java application maven, clears out the existing classes from last compile and
 							}
 					}	
 				}
@@ -14,7 +14,7 @@ pipeline {
 			
 			stage('Testing') { 
 				steps {
-					dir("/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master@2/cidr_convert_api/java/cidr-api/") 
+					dir("/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master@2/cidr_convert_api/java/cidr-api") 
 						{ 	sh 'pwd'
 							sh 'mvn test'}			//  runs all unit test classes
 					script {
