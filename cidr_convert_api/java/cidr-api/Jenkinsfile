@@ -55,6 +55,7 @@ pipeline {
 							sh 'pwd'
 							sh 'chmod +x start.sh'
 							sh './start.sh'
+							sh 'ls -l'
 						 // running the app 
 					}
 				}
