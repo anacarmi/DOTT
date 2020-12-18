@@ -6,7 +6,7 @@ pipeline {
 					dir("/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master/cidr_convert_api/java/cidr-api") {
 							script { 
 								sh 'pwd'
-								sh 'mvn clean build'   //cleanly build your Java application maven, clears out the existing classes from last compile and
+								sh 'mvn package -Dmaven.test.skip=true'   //cleanly build your Java application maven, clears out the existing classes from last compile and
 							}
 					}	
 				}
