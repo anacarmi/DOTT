@@ -38,7 +38,7 @@ pipeline {
 					
 					timeout(time: 1, unit: 'HOURS') {
                 				waitForQualityGate abortPipeline: true     // if QG says fail, then the pipeline stops
-              				}		
+              				}	 	
 				}
 			} 
 			
