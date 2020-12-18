@@ -77,7 +77,7 @@
                 </goals>
                 <!-- default target/jscoco/site/* -->
                 <configuration>
-                    <outputDirectory>/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master@2/cidr_convert_api/java/cidr-api/target/jacoco-report</outputDirectory>
+                    <outputDirectory>/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master@2/cidr_convert_api/java/cidr-api/target/report</outputDirectory>
                 </configuration>
             </execution>
         </executions>
