@@ -4,7 +4,7 @@ import static com.dott.Convert.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-/*
+
 
 public class ConvertTest extends TestCase
 {
@@ -67,5 +67,3 @@ public class ConvertTest extends TestCase
         assertFalse(Convert.ipv4Validation("...."));
     }
 }
-
- */ 
