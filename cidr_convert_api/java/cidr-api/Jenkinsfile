@@ -14,7 +14,9 @@ pipeline {
 			stage('Testing') { 
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") 
-						{ sh 'mvn test'}			//  runs all unit test classes
+						{ 	sh 'pwd'
+						 	sh 'ls'
+							sh 'mvn test'}			//  runs all unit test classes
 					script {
 						try {
 							junit 'target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
