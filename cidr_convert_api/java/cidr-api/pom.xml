@@ -58,6 +58,30 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
+                 
+                 <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>prepare-agent</goal>
+                </goals>
+            </execution>
+            <execution>
+                <id>jacoco-report</id>
+                <phase>test</phase>
+                <goals>
+                    <goal>report</goal>
+                </goals>
+                <!-- default target/jscoco/site/* -->
+                <configuration>
+                    <outputDirectory>/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master@2/cidr_convert_api/java/cidr-api/target/jacoco-report</outputDirectory>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
                  </plugins>
              
              
