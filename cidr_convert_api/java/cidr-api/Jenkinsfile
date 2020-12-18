@@ -5,8 +5,7 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api") {
 							script { 
-								sh 'pwd'
-								sh 'mvn package -Dmaven.test.skip=true'   //cleanly build your Java application maven, clears out the existing classes from last compile and
+								sh 'mvn package -Dmaven.test.skip=true'   // build your Java application maven skipping the tests
 							}
 					}	
 				}
@@ -17,12 +16,11 @@ pipeline {
 					dir("cidr_convert_api/java/cidr-api") { 	
 					   script {
 						try {
-							sh 'mvn test'
+							sh 'mvn test'         // try/catch for skipping the failing tests and keep going with pipeline
    						} catch (Exception e) {
-      							echo 'There is an error with tests: ' + e.toString()	// try/catch for skipping the failing tests and keep going with pipeline
+      							echo 'There is an error with tests: ' + e.toString()	
   						}
-						sh 'pwd'
-						sh 'cat target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
+						sh 'cat target/surefire-reports/TEST-*.xml'	 //shows the report file
 					   }
 					}
 				}
@@ -31,11 +29,13 @@ pipeline {
 			stage('Code Analysis: SonarCloud') {     
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") {
-						withSonarQubeEnv('SonarCloud') { 
-							sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
-							sh 'pwd'
+						withSonarQubeEnv('SonarCloud') {        // the connection between my jenkins and sonar thru maven
+							sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar' 
 						}
 					}
+					
+					sh 'echo "wait a little bit..."' 
+					
 					timeout(time: 1, unit: 'HOURS') {
                 				waitForQualityGate abortPipeline: true     // if QG says fail, then the pipeline stops
               				}		
