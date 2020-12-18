@@ -5,7 +5,8 @@ pipeline {
 				steps {
 					dir("/var/lib/jenkins/workspace/MyMultiBranch-Pipeline_master/cidr_convert_api/java/cidr-api") {
 							script { 
-								sh 'mvn package'   //cleanly build your Java application maven, clears out the existing classes from last compile and
+								sh 'pwd'
+								sh 'mvn clean package'   //cleanly build your Java application maven, clears out the existing classes from last compile and
 							}
 					}	
 				}
@@ -15,7 +16,7 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") 
 						{ 	sh 'pwd'
-							sh 'mvn test'}			//  runs all unit test classes
+							sh 'sudo mvn test'}			//  runs all unit test classes
 					script {
 						try {
 							junit 'target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
