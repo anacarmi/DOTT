@@ -30,8 +30,7 @@ pipeline {
 				steps {
 					dir("cidr_convert_api/java/cidr-api/") {
 						withSonarQubeEnv('SonarCloud') {        // the connection between my jenkins and sonar thru maven
-							sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar' 
-							sh 'sonar.coverage.jacoco.xmlReportPaths="target/surefire-reports/TEST-*.xml"'
+							sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
 						}
 					}
 					
