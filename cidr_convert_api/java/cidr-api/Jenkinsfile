@@ -56,7 +56,7 @@ pipeline {
 							//sh 'chmod +x start.sh'
 							//sh './start.sh'
 							sh 'export BUILD_ID=dontKillMe'
-  							sh 'nohup java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App  &'
+  							sh 'nohup java -cp target/cidr-api-1.0-SNAPSHOT-jar-with-dependencies.jar com.dott.App &'
 							sh 'echo "hi"'
 						//sh 'nohup java - > $WORKSPACE/scriptOutput.txt 2>&1 &'
 						 // running the app
