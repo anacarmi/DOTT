@@ -19,7 +19,8 @@ pipeline {
 							sh 'mvn test'}			//  runs all unit test classes
 					script {
 						try {
-							junit 'target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
+							sh 'pwd'
+							junit '*/target/surefire-reports/TEST-*.xml'	 //runs java unit testing framework
    						} catch (Exception e) {
       							echo 'Exception occurred: ' + e.toString()	// try/catch for skipping the failing tests and keep going with pipeline
   						}
